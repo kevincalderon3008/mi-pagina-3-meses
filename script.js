@@ -1,6 +1,11 @@
-// ==========================================
-// BOTÓN COMENZAR
-// ==========================================
+/* =========================================
+   PÁGINA 3 MESES CONTIGO ❤️
+========================================= */
+
+
+/* =========================================
+   BOTÓN COMENZAR
+========================================= */
 
 const startButton = document.getElementById("startButton");
 
@@ -8,53 +13,24 @@ if (startButton) {
 
     startButton.addEventListener("click", () => {
 
-    const historia =
-        document.getElementById("historia");
-
-    if (historia) {
-
-        historia.scrollIntoView({
+        window.scrollTo({
+            top: window.innerHeight,
             behavior: "smooth"
         });
 
-    }
-
-    // Comenzar la música automáticamente
-    if (audioPlayer) {
-
-        audioPlayer.play()
-            .then(() => {
-
-                playButton.textContent = "⏸";
-
-                musicDisc.classList.add("playing");
-
-            })
-            .catch((error) => {
-
-                console.log(
-                    "El navegador bloqueó la reproducción automática.",
-                    error
-                );
-
-            });
-
-    }
-
-});
+    });
 
 }
 
 
-// ==========================================
-// ANIMACIONES
-// ==========================================
+/* =========================================
+   ANIMACIONES AL HACER SCROLL
+========================================= */
 
-const revealElements =
-    document.querySelectorAll(".reveal");
+const revealElements = document.querySelectorAll(".reveal");
 
-const observer =
-    new IntersectionObserver((entries) => {
+const observer = new IntersectionObserver(
+    (entries) => {
 
         entries.forEach((entry) => {
 
@@ -66,9 +42,11 @@ const observer =
 
         });
 
-    }, {
+    },
+    {
         threshold: 0.15
-    });
+    }
+);
 
 
 revealElements.forEach((element) => {
@@ -78,82 +56,77 @@ revealElements.forEach((element) => {
 });
 
 
-// ==========================================
-// CORAZONES
-// ==========================================
-
-const heartsContainer =
-    document.getElementById("hearts-container");
-
+/* =========================================
+   CORAZONES FLOTANTES
+========================================= */
 
 function createHeart() {
 
-    if (!heartsContainer) {
-        return;
-    }
-
-    const heart =
-        document.createElement("div");
-
-    heart.className =
-        "floating-heart";
+    const heart = document.createElement("div");
 
     heart.textContent = "❤️";
 
-    heart.style.left =
-        Math.random() * 100 + "%";
+    heart.style.position = "fixed";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.bottom = "-30px";
+    heart.style.fontSize = Math.random() * 15 + 15 + "px";
+    heart.style.opacity = "0.7";
+    heart.style.pointerEvents = "none";
+    heart.style.zIndex = "999";
 
-    heart.style.fontSize =
-        12 + Math.random() * 20 + "px";
+    document.body.appendChild(heart);
 
-    heart.style.animationDuration =
-        5 + Math.random() * 5 + "s";
+    const duration = Math.random() * 3000 + 4000;
 
-    heartsContainer.appendChild(heart);
-
+    heart.animate(
+        [
+            {
+                transform: "translateY(0)",
+                opacity: 0
+            },
+            {
+                transform: "translateY(-30vh)",
+                opacity: 0.7
+            },
+            {
+                transform: "translateY(-110vh)",
+                opacity: 0
+            }
+        ],
+        {
+            duration: duration,
+            easing: "linear"
+        }
+    );
 
     setTimeout(() => {
 
         heart.remove();
 
-    }, 10000);
+    }, duration);
 
 }
 
 
-setInterval(createHeart, 900);
+setInterval(createHeart, 1800);
 
 
-// ==========================================
-// LIGHTBOX DE FOTOS
-// ==========================================
+/* =========================================
+   LIGHTBOX DE FOTOS
+========================================= */
 
-const photoCards =
-    document.querySelectorAll(".photo-card");
+const galleryImages = document.querySelectorAll(".photo-card img");
 
-const lightbox =
-    document.getElementById("lightbox");
-
-const lightboxImage =
-    document.getElementById("lightboxImage");
-
-const closeLightbox =
-    document.getElementById("closeLightbox");
+const lightbox = document.getElementById("lightbox");
+const lightboxImage = document.getElementById("lightboxImage");
+const closeLightbox = document.getElementById("closeLightbox");
 
 
-photoCards.forEach((card) => {
+galleryImages.forEach((image) => {
 
-    card.addEventListener("click", () => {
+    image.addEventListener("click", () => {
 
-        const image =
-            card.querySelector("img");
-
-        if (!image) {
-            return;
-        }
-
-        lightboxImage.src =
-            image.src;
+        lightboxImage.src = image.src;
 
         lightbox.classList.add("show");
 
@@ -162,221 +135,177 @@ photoCards.forEach((card) => {
 });
 
 
-if (closeLightbox) {
+closeLightbox.addEventListener("click", () => {
 
-    closeLightbox.addEventListener("click", () => {
+    lightbox.classList.remove("show");
+
+});
+
+
+lightbox.addEventListener("click", (event) => {
+
+    if (event.target === lightbox) {
 
         lightbox.classList.remove("show");
 
-    });
+    }
 
-}
-
-
-if (lightbox) {
-
-    lightbox.addEventListener("click", (event) => {
-
-        if (event.target === lightbox) {
-
-            lightbox.classList.remove("show");
-
-        }
-
-    });
-
-}
+});
 
 
-// ==========================================
-// REPRODUCTOR DE MÚSICA
-// ==========================================
-
-const audioPlayer =
-    document.getElementById("audioPlayer");
-
-const playButton =
-    document.getElementById("playButton");
-
-const previousButton =
-    document.getElementById("previousButton");
-
-const nextButton =
-    document.getElementById("nextButton");
-
-const progressBar =
-    document.getElementById("progressBar");
-
-const currentTimeElement =
-    document.getElementById("currentTime");
-
-const durationElement =
-    document.getElementById("duration");
-
-const songTitle =
-    document.getElementById("songTitle");
-
-const songNumber =
-    document.getElementById("songNumber");
-
-const musicDisc =
-    document.getElementById("musicDisc");
-
-
-// ==========================================
-// TUS 6 CANCIONES
-// ==========================================
+/* =========================================
+   REPRODUCTOR DE MÚSICA
+========================================= */
 
 const songs = [
 
     {
-        title:
-            "Damiano David - Zombie Lady (Lyrics)",
-
-        file:
-            "audio/Damiano David - Zombie Lady (Lyrics).mp3"
+        title: "Zombie Lady",
+        artist: "Damiano David",
+        file: "audio/Damiano David - Zombie Lady (Lyrics).mp3"
     },
 
     {
-        title:
-            "Jósean Log - Beso (Lyric Video)",
-
-        file:
-            "audio/Jósean Log - Beso (Lyric Video).mp3"
+        title: "Beso",
+        artist: "Jósean Log",
+        file: "audio/Jósean Log - Beso (Lyric Video).mp3"
     },
 
     {
-        title:
-            "Juno",
-
-        file:
-            "audio/Juno.mp3"
+        title: "Juno",
+        artist: "Juno",
+        file: "audio/Juno.mp3"
     },
 
     {
-        title:
-            "Morat - A Dónde Vamos (Video Oficial)",
-
-        file:
-            "audio/Morat - A Dónde Vamos (Video Oficial).mp3"
+        title: "A Dónde Vamos",
+        artist: "Morat",
+        file: "audio/Morat - A Dónde Vamos (Video Oficial).mp3"
     },
 
     {
-        title:
-            "Morat - Aprender A Quererte",
-
-        file:
-            "audio/Morat - Aprender A Quererte.mp3"
+        title: "Aprender A Quererte",
+        artist: "Morat",
+        file: "audio/Morat - Aprender A Quererte.mp3"
     },
 
     {
-        title:
-            "Para Enamorarte - CNCO (Letra)",
-
-        file:
-            "audio/Para Enamorarte - CNCO (Letra).mp3"
+        title: "Para Enamorarte",
+        artist: "CNCO",
+        file: "audio/Para Enamorarte - CNCO (Letra).mp3"
     }
 
 ];
 
 
+const audioPlayer = document.getElementById("audioPlayer");
+
+const songTitle = document.getElementById("songTitle");
+
+const songArtist = document.getElementById("songArtist");
+
+const playButton = document.getElementById("playButton");
+
+const prevButton = document.getElementById("prevButton");
+
+const nextButton = document.getElementById("nextButton");
+
+const progressBar = document.getElementById("progressBar");
+
+const currentTimeElement = document.getElementById("currentTime");
+
+const durationElement = document.getElementById("duration");
+
+const playlist = document.getElementById("playlist");
+
+
 let currentSong = 0;
 
 
-// ==========================================
-// CARGAR CANCIÓN
-// ==========================================
+/* =========================================
+   CARGAR CANCIÓN
+========================================= */
 
 function loadSong(index) {
 
-    const song =
-        songs[index];
+    currentSong = index;
 
-    audioPlayer.src =
-        song.file;
+    const song = songs[currentSong];
 
-    audioPlayer.load();
+    audioPlayer.src = song.file;
 
-    songTitle.textContent =
-        song.title;
+    songTitle.textContent = song.title;
 
-    songNumber.textContent =
-        "Canción " +
-        (index + 1) +
-        " de " +
-        songs.length;
-
-    progressBar.value = 0;
-
-    currentTimeElement.textContent =
-        "0:00";
-
-    durationElement.textContent =
-        "0:00";
+    songArtist.textContent = song.artist;
 
     updatePlaylist();
 
 }
 
 
-// ==========================================
-// PLAYLIST
-// ==========================================
+/* =========================================
+   PLAY / PAUSE
+========================================= */
 
-function updatePlaylist() {
+function playSong() {
 
-    const items =
-        document.querySelectorAll(
-            ".playlist-item"
-        );
+    audioPlayer.play();
 
-    items.forEach((item, index) => {
-
-        item.classList.remove("active");
-
-        if (index === currentSong) {
-
-            item.classList.add("active");
-
-        }
-
-    });
+    playButton.textContent = "⏸";
 
 }
 
 
-// ==========================================
-// PLAY / PAUSA
-// ==========================================
+function pauseSong() {
 
-function togglePlay() {
+    audioPlayer.pause();
+
+    playButton.textContent = "▶";
+
+}
+
+
+playButton.addEventListener("click", () => {
 
     if (audioPlayer.paused) {
 
-        audioPlayer.play()
-            .catch((error) => {
-
-                console.error(
-                    "No se pudo reproducir:",
-                    error
-                );
-
-            });
+        playSong();
 
     } else {
 
-        audioPlayer.pause();
+        pauseSong();
 
     }
 
-}
+});
 
 
-// ==========================================
-// SIGUIENTE
-// ==========================================
+/* =========================================
+   CANCIÓN ANTERIOR
+========================================= */
 
-function nextSong() {
+prevButton.addEventListener("click", () => {
+
+    currentSong--;
+
+    if (currentSong < 0) {
+
+        currentSong = songs.length - 1;
+
+    }
+
+    loadSong(currentSong);
+
+    playSong();
+
+});
+
+
+/* =========================================
+   SIGUIENTE CANCIÓN
+========================================= */
+
+nextButton.addEventListener("click", () => {
 
     currentSong++;
 
@@ -388,38 +317,76 @@ function nextSong() {
 
     loadSong(currentSong);
 
-    audioPlayer.play()
-        .catch(() => {});
+    playSong();
 
-}
+});
 
 
-// ==========================================
-// ANTERIOR
-// ==========================================
+/* =========================================
+   SIGUIENTE AUTOMÁTICAMENTE
+========================================= */
 
-function previousSong() {
+audioPlayer.addEventListener("ended", () => {
 
-    currentSong--;
+    currentSong++;
 
-    if (currentSong < 0) {
+    if (currentSong >= songs.length) {
 
-        currentSong =
-            songs.length - 1;
+        currentSong = 0;
 
     }
 
     loadSong(currentSong);
 
-    audioPlayer.play()
-        .catch(() => {});
+    playSong();
 
-}
+});
 
 
-// ==========================================
-// FORMATO DEL TIEMPO
-// ==========================================
+/* =========================================
+   BARRA DE PROGRESO
+========================================= */
+
+audioPlayer.addEventListener("timeupdate", () => {
+
+    if (!audioPlayer.duration) {
+        return;
+    }
+
+    const progress =
+        (audioPlayer.currentTime / audioPlayer.duration) * 100;
+
+    progressBar.value = progress;
+
+    currentTimeElement.textContent =
+        formatTime(audioPlayer.currentTime);
+
+});
+
+
+audioPlayer.addEventListener("loadedmetadata", () => {
+
+    durationElement.textContent =
+        formatTime(audioPlayer.duration);
+
+});
+
+
+progressBar.addEventListener("input", () => {
+
+    if (!audioPlayer.duration) {
+        return;
+    }
+
+    audioPlayer.currentTime =
+        (progressBar.value / 100) * audioPlayer.duration;
+
+});
+
+
+/* =========================================
+   FORMATO DEL TIEMPO
+========================================= */
 
 function formatTime(seconds) {
 
@@ -429,197 +396,70 @@ function formatTime(seconds) {
 
     }
 
-    const minutes =
-        Math.floor(seconds / 60);
+    const minutes = Math.floor(seconds / 60);
 
     const remainingSeconds =
         Math.floor(seconds % 60);
 
-    return (
-        minutes +
-        ":" +
-        remainingSeconds
-            .toString()
-            .padStart(2, "0")
-    );
+    return `${minutes}:${remainingSeconds
+        .toString()
+        .padStart(2, "0")}`;
 
 }
 
 
-// ==========================================
-// PROGRESO
-// ==========================================
+/* =========================================
+   LISTA DE CANCIONES
+========================================= */
 
-audioPlayer.addEventListener(
-    "timeupdate",
-    () => {
+function updatePlaylist() {
 
-        if (audioPlayer.duration) {
+    playlist.innerHTML = "";
 
-            const percentage =
-                (
-                    audioPlayer.currentTime /
-                    audioPlayer.duration
-                ) * 100;
+    songs.forEach((song, index) => {
 
-            progressBar.value =
-                percentage;
+        const item = document.createElement("div");
 
-        }
+        item.className = "song-item";
 
-        currentTimeElement.textContent =
-            formatTime(
-                audioPlayer.currentTime
-            );
+        if (index === currentSong) {
 
-    }
-);
-
-
-// ==========================================
-// DURACIÓN
-// ==========================================
-
-audioPlayer.addEventListener(
-    "loadedmetadata",
-    () => {
-
-        durationElement.textContent =
-            formatTime(
-                audioPlayer.duration
-            );
-
-    }
-);
-
-
-// ==========================================
-// MOVER PROGRESO
-// ==========================================
-
-progressBar.addEventListener(
-    "input",
-    () => {
-
-        if (audioPlayer.duration) {
-
-            audioPlayer.currentTime =
-                (
-                    progressBar.value / 100
-                ) *
-                audioPlayer.duration;
+            item.classList.add("active");
 
         }
 
-    }
-);
+        item.textContent =
+            `${index + 1}. ${song.title} — ${song.artist}`;
 
+        item.addEventListener("click", () => {
 
-// ==========================================
-// ESTADO DEL REPRODUCTOR
-// ==========================================
+            loadSong(index);
 
-audioPlayer.addEventListener(
-    "play",
-    () => {
+            playSong();
 
-        playButton.textContent =
-            "⏸";
+        });
 
-        musicDisc.classList.add(
-            "playing"
-        );
-
-    }
-);
-
-
-audioPlayer.addEventListener(
-    "pause",
-    () => {
-
-        playButton.textContent =
-            "▶";
-
-        musicDisc.classList.remove(
-            "playing"
-        );
-
-    }
-);
-
-
-// ==========================================
-// CUANDO TERMINA LA CANCIÓN
-// ==========================================
-
-audioPlayer.addEventListener(
-    "ended",
-    () => {
-
-        nextSong();
-
-    }
-);
-
-
-// ==========================================
-// BOTONES
-// ==========================================
-
-playButton.addEventListener(
-    "click",
-    togglePlay
-);
-
-
-nextButton.addEventListener(
-    "click",
-    nextSong
-);
-
-
-previousButton.addEventListener(
-    "click",
-    previousSong
-);
-
-
-// ==========================================
-// CLIC EN PLAYLIST
-// ==========================================
-
-const playlistItems =
-    document.querySelectorAll(
-        ".playlist-item"
-    );
-
-
-playlistItems.forEach((item) => {
-
-    item.addEventListener("click", () => {
-
-        currentSong =
-            Number(
-                item.dataset.song
-            );
-
-        loadSong(currentSong);
-
-        audioPlayer.play()
-            .catch(() => {});
+        playlist.appendChild(item);
 
     });
 
-});
+}
 
 
-// ==========================================
-// CONTADOR
-// ==========================================
+/* =========================================
+   CONTADOR
+========================================= */
 
-// CAMBIA ESTA FECHA POR LA FECHA REAL
-// EN QUE COMENZARON SU RELACIÓN.
+/*
+   CAMBIA ESTA FECHA POR LA FECHA REAL
+   EN QUE COMENZARON SU RELACIÓN.
+
+   FORMATO:
+   AÑO-MES-DÍA T:MINUTOS
+
+   Ejemplo:
+   "2026-06-09T20:00:00"
+*/
 
 const relationshipDate =
     new Date("2026-06-09T20:00:00");
@@ -627,115 +467,91 @@ const relationshipDate =
 
 function updateCounter() {
 
-    const now =
-        new Date();
+    const now = new Date();
 
     const difference =
         now - relationshipDate;
 
+
     if (difference < 0) {
+
         return;
+
     }
 
+
     const totalSeconds =
-        Math.floor(
-            difference / 1000
-        );
+        Math.floor(difference / 1000);
+
 
     const days =
-        Math.floor(
-            totalSeconds / 86400
-        );
+        Math.floor(totalSeconds / 86400);
+
 
     const hours =
-        Math.floor(
-            (totalSeconds % 86400) / 3600
-        );
+        Math.floor((totalSeconds % 86400) / 3600);
+
 
     const minutes =
-        Math.floor(
-            (totalSeconds % 3600) / 60
-        );
+        Math.floor((totalSeconds % 3600) / 60);
+
 
     const seconds =
         totalSeconds % 60;
 
 
-    document.getElementById(
-        "days"
-    ).textContent = days;
+    document.getElementById("days").textContent =
+        days;
 
+    document.getElementById("hours").textContent =
+        hours;
 
-    document.getElementById(
-        "hours"
-    ).textContent = hours;
+    document.getElementById("minutes").textContent =
+        minutes;
 
-
-    document.getElementById(
-        "minutes"
-    ).textContent = minutes;
-
-
-    document.getElementById(
-        "seconds"
-    ).textContent = seconds;
+    document.getElementById("seconds").textContent =
+        seconds;
 
 }
 
+
+setInterval(updateCounter, 1000);
 
 updateCounter();
 
-setInterval(
-    updateCounter,
-    1000
-);
 
+/* =========================================
+   BOTÓN SORPRESA
+========================================= */
 
-// ==========================================
-// BOTÓN SORPRESA
-// ==========================================
-
-const loveButton =
-    document.getElementById("loveButton");
+const surpriseButton =
+    document.getElementById("surpriseButton");
 
 const surpriseMessage =
-    document.getElementById(
-        "surpriseMessage"
-    );
+    document.getElementById("surpriseMessage");
 
 
-if (loveButton) {
+surpriseButton.addEventListener("click", () => {
 
-    loveButton.addEventListener(
-        "click",
-        () => {
+    surpriseMessage.classList.toggle("show");
 
-            surpriseMessage.classList.remove(
-                "hidden"
-            );
+    if (surpriseMessage.classList.contains("show")) {
 
-            loveButton.textContent =
-                "❤️ Gracias por estos 3 meses ❤️";
+        surpriseButton.textContent =
+            "Cerrar sorpresa 💕";
 
+    } else {
 
-            for (let i = 0; i < 15; i++) {
+        surpriseButton.textContent =
+            "Abrir sorpresa 💖";
 
-                setTimeout(() => {
+    }
 
-                    createHeart();
-
-                }, i * 100);
-
-            }
-
-        }
-    );
-
-}
+});
 
 
-// ==========================================
-// INICIAR
-// ==========================================
+/* =========================================
+   CARGAR PRIMERA CANCIÓN
+========================================= */
 
 loadSong(0);
