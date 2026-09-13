@@ -1,0 +1,893 @@
+/* =========================================
+   CONFIGURACIÓN GENERAL
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #fff5f8;
+    color: #3d2630;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+}
+
+
+/* =========================================
+   CORAZONES FLOTANTES
+========================================= */
+
+#hearts-container {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 999;
+}
+
+.floating-heart {
+    position: absolute;
+    bottom: -50px;
+    animation: floatHeart linear forwards;
+    opacity: 0.7;
+}
+
+@keyframes floatHeart {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+
+/* =========================================
+   PORTADA
+========================================= */
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 30px;
+
+    background:
+        radial-gradient(
+            circle at top left,
+            #ffd6e4,
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at bottom right,
+            #ffc1d5,
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #fff1f6,
+            #ffe0eb
+        );
+}
+
+.hero-content {
+    max-width: 800px;
+    animation: aparecer 1.5s ease;
+}
+
+.small-title {
+    color: #a95772;
+    margin-bottom: 15px;
+    font-size: 1rem;
+    letter-spacing: 1px;
+}
+
+.hero h1 {
+    color: #c73e68;
+    font-size: clamp(3rem, 9vw, 7rem);
+    line-height: 1.1;
+    margin-bottom: 25px;
+}
+
+.hero-text {
+    color: #704351;
+    font-size: 1.2rem;
+    margin-bottom: 35px;
+}
+
+#startButton {
+    border: none;
+    background: #d94b76;
+    color: white;
+    padding: 16px 30px;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: bold;
+
+    box-shadow:
+        0 10px 25px rgba(217, 75, 118, 0.3);
+
+    transition: 0.3s;
+}
+
+#startButton:hover {
+    background: #c73e68;
+    transform: translateY(-4px) scale(1.03);
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================================
+   SECCIONES
+========================================= */
+
+.section {
+    max-width: 1200px;
+    margin: auto;
+    padding: 100px 7%;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 55px;
+}
+
+.section-title span {
+    font-size: 2.5rem;
+}
+
+.section-title h2 {
+    color: #bd4268;
+    font-size: clamp(2rem, 5vw, 3rem);
+    margin: 10px 0;
+}
+
+.section-title p {
+    max-width: 650px;
+    margin: auto;
+    color: #765461;
+}
+
+
+/* =========================================
+   ANIMACIONES
+========================================= */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* =========================================
+   HISTORIA
+========================================= */
+
+.story-card {
+    max-width: 850px;
+    margin: auto;
+    padding: 40px;
+
+    background: white;
+
+    border-radius: 25px;
+
+    border: 1px solid #f8dce5;
+
+    box-shadow:
+        0 15px 40px rgba(160, 60, 90, 0.1);
+}
+
+.story-card p {
+    font-size: 1.05rem;
+    margin-bottom: 20px;
+}
+
+.story-card p:last-child {
+    margin-bottom: 0;
+}
+
+
+/* =========================================
+   GALERÍA
+========================================= */
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.photo-card {
+    height: 280px;
+    overflow: hidden;
+    cursor: pointer;
+
+    background: #f9dce6;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 10px 25px rgba(100, 30, 50, 0.12);
+
+    transition: 0.4s;
+}
+
+.photo-card:hover {
+    transform: translateY(-8px) scale(1.02);
+
+    box-shadow:
+        0 18px 35px rgba(100, 30, 50, 0.2);
+}
+
+.photo-card img {
+    width: 100%;
+    height: 100%;
+    display: block;
+
+    object-fit: cover;
+
+    transition: 0.5s;
+}
+
+.photo-card:hover img {
+    transform: scale(1.08);
+}
+
+
+/* =========================================
+   REPRODUCTOR
+========================================= */
+
+.music-player {
+    max-width: 800px;
+    margin: auto;
+    padding: 45px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #fff0f5
+        );
+
+    border-radius: 35px;
+
+    border: 1px solid #f5d4df;
+
+    box-shadow:
+        0 20px 50px rgba(160, 50, 90, 0.15);
+}
+
+
+/* DISCO */
+
+.music-disc {
+    width: 210px;
+    height: 210px;
+    margin: 0 auto 30px;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background:
+        repeating-radial-gradient(
+            circle,
+            #2c2024 0px,
+            #2c2024 4px,
+            #171215 5px,
+            #171215 8px
+        );
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.25),
+        inset 0 0 0 8px #111;
+}
+
+.music-disc.playing {
+    animation: girar 4s linear infinite;
+}
+
+.disc-center {
+    width: 65px;
+    height: 65px;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #d94b76;
+
+    font-size: 1.5rem;
+
+    box-shadow:
+        0 0 0 8px #f5d6df;
+}
+
+@keyframes girar {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* INFORMACIÓN */
+
+.song-info {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+#songNumber {
+    color: #a86a7d;
+    font-size: 0.9rem;
+}
+
+#songTitle {
+    color: #b93864;
+    font-size: 1.3rem;
+    margin-top: 5px;
+}
+
+
+/* PROGRESO */
+
+.progress-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 20px 0;
+}
+
+.progress-container span {
+    min-width: 40px;
+    color: #765461;
+    font-size: 0.8rem;
+}
+
+#progressBar {
+    flex: 1;
+    accent-color: #d94b76;
+    cursor: pointer;
+}
+
+
+/* CONTROLES */
+
+.music-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    margin: 25px 0 35px;
+}
+
+.music-controls button {
+    width: 50px;
+    height: 50px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #f6dce5;
+    color: #b93864;
+
+    font-size: 1.2rem;
+
+    transition: 0.3s;
+}
+
+.music-controls button:hover {
+    transform: scale(1.1);
+    background: #efbfd0;
+}
+
+.music-controls .play-button {
+    width: 70px;
+    height: 70px;
+
+    background: #d94b76;
+    color: white;
+
+    font-size: 1.5rem;
+
+    box-shadow:
+        0 8px 20px rgba(217, 75, 118, 0.3);
+}
+
+
+/* PLAYLIST */
+
+.playlist {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.playlist-item {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    padding: 15px 18px;
+
+    border: 1px solid #f1d7e0;
+    border-radius: 15px;
+
+    background: white;
+
+    color: #583641;
+
+    text-align: left;
+
+    transition: 0.3s;
+}
+
+.playlist-item:hover {
+    background: #fff0f5;
+    transform: translateX(4px);
+}
+
+.playlist-item.active {
+    background: #fbe0e9;
+    border-color: #e996af;
+    color: #b93864;
+    font-weight: bold;
+}
+
+
+/* =========================================
+   CARTA
+========================================= */
+
+.letter {
+    max-width: 800px;
+    margin: auto;
+    padding: 55px;
+
+    background: #fffdf8;
+
+    border-left: 6px solid #d94b76;
+    border-radius: 10px;
+
+    box-shadow:
+        0 15px 40px rgba(100, 70, 50, 0.12);
+}
+
+.letter-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.letter h2 {
+    color: #bd4268;
+    margin-bottom: 25px;
+}
+
+.letter p {
+    margin-bottom: 20px;
+}
+
+.signature {
+    color: #c33f68;
+    text-align: right;
+    font-weight: bold;
+}
+
+
+/* =========================================
+   VIDEO
+========================================= */
+
+.video-container {
+    max-width: 850px;
+    margin: auto;
+
+    padding: 12px;
+
+    background: #1e171a;
+
+    border-radius: 25px;
+
+    box-shadow:
+        0 20px 45px rgba(0, 0, 0, 0.2);
+}
+
+.video-container video {
+    width: 100%;
+    display: block;
+
+    border-radius: 17px;
+
+    max-height: 600px;
+}
+
+
+/* =========================================
+   TIMELINE
+========================================= */
+
+.timeline {
+    max-width: 850px;
+    margin: auto;
+    position: relative;
+}
+
+.timeline::before {
+    content: "";
+
+    position: absolute;
+
+    left: 28px;
+    top: 0;
+    bottom: 0;
+
+    width: 3px;
+
+    background: #ed9eb7;
+}
+
+.timeline-item {
+    position: relative;
+
+    display: flex;
+
+    gap: 25px;
+
+    margin-bottom: 35px;
+}
+
+.timeline-number {
+    min-width: 58px;
+    height: 58px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #d94b76;
+    color: white;
+
+    font-size: 1.3rem;
+    font-weight: bold;
+
+    z-index: 1;
+}
+
+.timeline-content {
+    flex: 1;
+
+    padding: 25px;
+
+    background: white;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 10px 25px rgba(160, 60, 90, 0.08);
+}
+
+.timeline-content h3 {
+    color: #c33f68;
+    margin-bottom: 8px;
+}
+
+
+/* =========================================
+   CONTADOR
+========================================= */
+
+.counter-section {
+    text-align: center;
+}
+
+.counter {
+    max-width: 850px;
+    margin: auto;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 20px;
+}
+
+.counter-box {
+    padding: 30px 15px;
+
+    background: white;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 10px 25px rgba(160, 60, 90, 0.08);
+}
+
+.counter-box strong {
+    display: block;
+
+    color: #c73e68;
+
+    font-size: 2.5rem;
+}
+
+.counter-box span {
+    color: #765461;
+}
+
+
+/* =========================================
+   SORPRESA
+========================================= */
+
+.surprise-section {
+    text-align: center;
+}
+
+.surprise-card {
+    max-width: 700px;
+    margin: auto;
+
+    padding: 60px 30px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffe1eb,
+            #fff1f6
+        );
+
+    border-radius: 35px;
+
+    box-shadow:
+        0 15px 40px rgba(160, 60, 90, 0.12);
+}
+
+.big-heart {
+    font-size: 5rem;
+
+    animation:
+        heartbeat 1.4s infinite;
+}
+
+@keyframes heartbeat {
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+}
+
+.surprise-card h2 {
+    color: #b93864;
+    margin: 20px 0;
+}
+
+#loveButton {
+    border: none;
+
+    padding: 15px 30px;
+
+    border-radius: 50px;
+
+    background: #d94b76;
+    color: white;
+
+    font-weight: bold;
+    font-size: 1rem;
+
+    transition: 0.3s;
+}
+
+#loveButton:hover {
+    transform: scale(1.05);
+}
+
+#surpriseMessage {
+    margin-top: 25px;
+
+    color: #704351;
+
+    font-size: 1.1rem;
+}
+
+.hidden {
+    display: none;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.footer {
+    padding: 70px 20px;
+
+    background: #3c202b;
+
+    color: white;
+
+    text-align: center;
+}
+
+.footer h2 {
+    color: #ffd8e4;
+    margin-bottom: 10px;
+}
+
+.footer p {
+    color: #e9bdca;
+}
+
+.footer-heart {
+    font-size: 2rem;
+    margin-top: 15px;
+}
+
+
+/* =========================================
+   LIGHTBOX
+========================================= */
+
+.lightbox {
+    position: fixed;
+    inset: 0;
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px;
+
+    background: rgba(25, 10, 16, 0.9);
+
+    z-index: 2000;
+}
+
+.lightbox.show {
+    display: flex;
+}
+
+.lightbox img {
+    max-width: 90%;
+    max-height: 85vh;
+
+    border-radius: 15px;
+
+    object-fit: contain;
+}
+
+#closeLightbox {
+    position: absolute;
+
+    top: 25px;
+    right: 30px;
+
+    width: 45px;
+    height: 45px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: white;
+    color: #a83259;
+
+    font-size: 1.5rem;
+}
+
+
+/* =========================================
+   CELULAR / TABLET
+========================================= */
+
+@media (max-width: 900px) {
+
+    .gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .counter {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .section {
+        padding: 70px 20px;
+    }
+
+    .hero {
+        padding: 20px;
+    }
+
+    .hero h1 {
+        font-size: 3.2rem;
+    }
+
+    .gallery {
+        grid-template-columns: 1fr;
+    }
+
+    .photo-card {
+        height: 330px;
+    }
+
+    .music-player {
+        padding: 25px 18px;
+    }
+
+    .music-disc {
+        width: 170px;
+        height: 170px;
+    }
+
+    .letter {
+        padding: 35px 25px;
+    }
+
+    .timeline-item {
+        gap: 15px;
+    }
+
+    .timeline-number {
+        min-width: 48px;
+        height: 48px;
+    }
+
+}
