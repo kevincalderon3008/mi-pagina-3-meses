@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>3 meses contigo ❤️</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- CORAZONES FLOTANTES -->
+    <div id="hearts-container"></div>
+
+
+    <!-- ==============================
+         PORTADA
+    =============================== -->
+
+    <header class="hero">
+
+        <div class="hero-content">
+
+            <p class="small-title">
+                Una pequeña historia de nosotros ❤️
+            </p>
+
+            <h1>
+                3 meses contigo ❤️
+            </h1>
+
+            <p class="hero-text">
+                Gracias por estos 3 meses llenos de momentos,
+                risas, cariño y recuerdos que quiero seguir
+                construyendo contigo.
+            </p>
+
+            <button id="startButton">
+                Comenzar nuestra historia ❤️
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- ==============================
+         NUESTRA HISTORIA
+    =============================== -->
+
+    <section class="section reveal" id="historia">
+
+        <div class="section-title">
+
+            <span>💗</span>
+
+            <h2>
+                Nuestra historia
+            </h2>
+
+            <p>
+                Tres meses pueden parecer poco, pero para mí
+                están llenos de momentos especiales.
+            </p>
+
+        </div>
+
+
+        <div class="story-card">
+
+            <p>
+                Estos tres meses han sido una etapa muy bonita
+                para mí. Hemos compartido conversaciones,
+                risas, momentos especiales y recuerdos que
+                quiero guardar.
+            </p>
+
+            <p>
+                Cada momento contigo ha ido formando una parte
+                de nuestra historia y espero que podamos seguir
+                creando muchos recuerdos juntos.
+            </p>
+
+            <p>
+                Gracias por estar conmigo, Paulina. ❤️
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==============================
+         GALERÍA
+    =============================== -->
+
+    <section class="section reveal">
+
+        <div class="section-title">
+
+            <span>📸</span>
+
+            <h2>
+                Nuestros recuerdos
+            </h2>
+
+            <p>
+                Algunos momentos que quiero guardar para siempre.
+            </p>
+
+        </div>
+
+
+        <div class="gallery">
+
+            <div class="photo-card">
+                <img src="images/foto1.jpg" alt="Nuestro recuerdo 1">
+            </div>
+
+            <div class="photo-card">
+                <img src="images/foto2.jpeg" alt="Nuestro recuerdo 2">
+            </div>
+
+            <div class="photo-card">
+                <img src="images/foto3.jpg" alt="Nuestro recuerdo 3">
+            </div>
+
+            <div class="photo-card">
+                <img src="images/foto4.jpg" alt="Nuestro recuerdo 4">
+            </div>
+
+            <div class="photo-card">
+                <img src="images/foto5.jpeg" alt="Nuestro recuerdo 5">
+            </div>
+
+            <div class="photo-card">
+                <img src="images/foto6.jpg" alt="Nuestro recuerdo 6">
+            </div>
+
+            <div class="photo-card">
+                <img src="images/foto7.jpeg" alt="Nuestro recuerdo 7">
+            </div>
+
+            <!-- FOTO 8 CORREGIDA -->
+            <div class="photo-card">
+                <img src="images/foto8.jpg" alt="Nuestro recuerdo 8">
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==============================
+         MÚSICA
+    =============================== -->
+
+    <section class="section reveal">
+
+        <div class="section-title">
+
+            <span>🎵</span>
+
+            <h2>
+                Nuestra música
+            </h2>
+
+            <p>
+                Canciones que me recuerdan a ti ❤️
+            </p>
+
+        </div>
+
+
+        <div class="music-player">
+
+
+            <div class="music-disc" id="musicDisc">
+
+                <div class="disc-center">
+                    🎵
+                </div>
+
+            </div>
+
+
+            <div class="song-info">
+
+                <p id="songNumber">
+                    Canción 1 de 6
+                </p>
+
+                <h3 id="songTitle">
+                    Damiano David - Zombie Lady
+                </h3>
+
+            </div>
+
+
+            <div class="progress-container">
+
+                <span id="currentTime">
+                    0:00
+                </span>
+
+                <input
+                    type="range"
+                    id="progressBar"
+                    min="0"
+                    max="100"
+                    value="0">
+
+                <span id="duration">
+                    0:00
+                </span>
+
+            </div>
+
+
+            <div class="music-controls">
+
+                <button id="previousButton">
+                    ⏮
+                </button>
+
+                <button
+                    id="playButton"
+                    class="play-button">
+                    ▶
+                </button>
+
+                <button id="nextButton">
+                    ⏭
+                </button>
+
+            </div>
+
+
+            <div class="playlist" id="playlist">
+
+                <button
+                    class="playlist-item active"
+                    data-song="0">
+
+                    <span>1</span>
+
+                    <span>
+                        Damiano David - Zombie Lady
+                    </span>
+
+                </button>
+
+
+                <button
+                    class="playlist-item"
+                    data-song="1">
+
+                    <span>2</span>
+
+                    <span>
+                        Jósean Log - Beso
+                    </span>
+
+                </button>
+
+
+                <button
+                    class="playlist-item"
+                    data-song="2">
+
+                    <span>3</span>
+
+                    <span>
+                        Juno
+                    </span>
+
+                </button>
+
+
+                <button
+                    class="playlist-item"
+                    data-song="3">
+
+                    <span>4</span>
+
+                    <span>
+                        Morat - A Dónde Vamos
+                    </span>
+
+                </button>
+
+
+                <button
+                    class="playlist-item"
+                    data-song="4">
+
+                    <span>5</span>
+
+                    <span>
+                        Morat - Aprender A Quererte
+                    </span>
+
+                </button>
+
+
+                <button
+                    class="playlist-item"
+                    data-song="5">
+
+                    <span>6</span>
+
+                    <span>
+                        Para Enamorarte - CNCO
+                    </span>
+
+                </button>
+
+            </div>
+
+
+            <audio
+                id="audioPlayer"
+                preload="metadata">
+
+                <source
+                    src="audio/Damiano David - Zombie Lady (Lyrics).mp3"
+                    type="audio/mpeg">
+
+            </audio>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==============================
+         CARTA
+    =============================== -->
+
+    <section class="section reveal">
+
+        <div class="section-title">
+
+            <span>💌</span>
+
+            <h2>
+                Una carta para ti
+            </h2>
+
+        </div>
+
+
+        <div class="letter">
+
+            <div class="letter-icon">
+                💌
+            </div>
+
+            <h2>
+                Para ti, mi chaparrita hermosa ❤️
+            </h2>
+
+            <p>
+                Paulina desde la primera vez que te vi senti una 
+                conexion contigo desde ese dia yo queria tener una amistad
+                contigo pero ahora paso algo mejor que eso desde el 9 de junio
+                de 2026 fue ese primer beso siempre siempre lo recordare y de ese 
+                13/06/2026 donde nos dimos cuenta que esto no solo era por un rato
+                sino que queriamos algo mas que eso un amor verdadero
+                Asi que yo te dare cariño comprension y ternura muejejejeje jsjsja
+                te amoooo mi amoooooor
+            </p>
+
+            <p>
+                Gracias por cada sonrisa, cada conversación,
+                cada momento bonito y por estar conmigo
+                me gusta poder compartir contigo diferentes
+                cosas y crear recuerdos que poco a poco
+                forman nuestra historia este es otro capitulo mas 
+                nuestra relacion sera una historia sin fin
+            </p>
+
+            <p>
+                Quiero seguir disfrutando cada momento contigo,
+                seguir conociéndote, apoyándote y creando
+                muchos recuerdos más siempre y solo contigo 
+            </p>
+
+            <p>
+                Gracias por estos 3 meses, Mi amorcito ❤️
+            </p>
+
+            <p class="signature">
+                Con cariño tu encebollado con hartooooo chifle ❤️
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==============================
+         VIDEO
+    =============================== -->
+
+    <section class="section reveal">
+
+        <div class="section-title">
+
+            <span>🎥</span>
+
+            <h2>
+                Un mensaje para ti
+            </h2>
+
+            <p>
+                Esta vez no quería escribirlo...
+                quería decírtelo yo mismo.
+            </p>
+
+        </div>
+
+
+        <div class="video-container">
+
+            <video
+                controls
+                preload="metadata">
+
+                <source
+                    src="videos/mensaje-para-paulina.mp4"
+                    type="video/mp4">
+
+                Tu navegador no puede reproducir este video.
+
+            </video>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==============================
+         LÍNEA DE TIEMPO
+    =============================== -->
+
+    <section class="section reveal">
+
+        <div class="section-title">
+
+            <span>🗓️</span>
+
+            <h2>
+                3 meses de nosotros ❤️
+            </h2>
+
+            <p>
+                Cada mes es una parte de nuestra historia y tambien una parte de nuestras locuras
+            </p>
+
+        </div>
+
+
+        <div class="timeline">
+
+
+            <div class="timeline-item">
+
+                <div class="timeline-number">
+                    1
+                </div>
+
+                <div class="timeline-content">
+
+                    <h3>
+                        Primer mes ❤️
+                    </h3>
+
+                    <p>
+                        El comienzo de nuestra historia con ese
+                        beso que marco el inicio de algo hermoso
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="timeline-item">
+
+                <div class="timeline-number">
+                    2
+                </div>
+
+                <div class="timeline-content">
+
+                    <h3>
+                        Segundo mes 💕
+                    </h3>
+
+                    <p>
+                        Más momentos juntos tu y yo con nuestro amor
+                        y travesuras 
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="timeline-item">
+
+                <div class="timeline-number">
+                    3
+                </div>
+
+                <div class="timeline-content">
+
+                    <h3>
+                        Tercer mes 💖
+                    </h3>
+
+                    <p>
+                        Tres meses juntos y muchas ganas
+                        de seguir siempre con mas y mas
+                        dias contigo nomas
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- ==============================
+         CONTADOR
+    =============================== -->
+
+    <section class="section counter-section reveal">
+
+        <div class="section-title">
+
+            <span>⏳</span>
+
+            <h2>
+                Cada segundo cuenta ❤️
+            </h2>
+
+            <p>
+                Nuestro tiempo juntos.
+            </p>
+
+        </div>
+
+
+        <div class="counter">
+
+            <div class="counter-box">
+
+                <strong id="days">
+                    0
+                </strong>
+
+                <span>
+                    Días
+                </span>
+
+            </div>
+
+
+            <div class="counter-box">
+
+                <strong id="hours">
+                    0
+                </strong>
+
+                <span>
+                    Horas
+                </span>
+
+            </div>
+
+
+            <div class="counter-box">
+
+                <strong id="minutes">
+                    0
+                </strong>
+
+                <span>
+                    Minutos
+                </span>
+
+            </div>
+
+
+            <div class="counter-box">
+
+                <strong id="seconds">
+                    0
+                </strong>
+
+                <span>
+                    Segundos
+                </span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==============================
+         SORPRESA
+    =============================== -->
+
+    <section class="section surprise-section reveal">
+
+        <div class="surprise-card">
+
+            <div class="big-heart">
+                ❤️
+            </div>
+
+            <h2>
+                Tengo algo que decirte...
+            </h2>
+
+            <button id="loveButton">
+                Te quiero ❤️
+            </button>
+
+            <p
+                id="surpriseMessage"
+                class="hidden">
+
+                Gracias por estos 3 meses, Paulina.
+                Espero que sigamos creando muchos
+                recuerdos juntos ❤️
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==============================
+         FINAL
+    =============================== -->
+
+    <footer class="footer">
+
+        <h2>
+            Gracias por estos 3 meses, Paulina ❤️
+        </h2>
+
+        <p>
+            Espero que sigamos escribiendo nuestra historia
+            y creando muchos recuerdos juntos siempre siempre
+            amandonos, dandonos amor, a veces peleas pero que
+            siempre estemos juntos y superando cada prueba que
+            nos de la vida
+        </p>
+
+        <div class="footer-heart">
+            ❤️
+        </div>
+
+    </footer>
+
+
+    <!-- ==============================
+         LIGHTBOX
+    =============================== -->
+
+    <div
+        class="lightbox"
+        id="lightbox">
+
+        <button id="closeLightbox">
+            ×
+        </button>
+
+        <img
+            id="lightboxImage"
+            src=""
+            alt="Foto ampliada">
+
+    </div>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
